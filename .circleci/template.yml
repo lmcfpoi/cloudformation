@@ -1,7 +1,7 @@
 Description: >
     Francois Poirier
 ##########
-######
+##########
 Resources:
   Ec2Instance:
     Type: AWS::EC2::Instance
