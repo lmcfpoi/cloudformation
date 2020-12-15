@@ -1,0 +1,19 @@
+#######
+version: 2.1
+############
+jobs:
+  create_infrastructure:
+    docker:
+      - image: amazon/aws-cli
+   
+    steps:
+      - checkout
+      - run:
+          name: "Create my AWS stack tabarnac...."
+          command: |
+            aws cloudformation deploy --stack-name $AWS_STACK_NAME --template-file template.yml
+      
+workflows:
+  myworkflow:
+    jobs:
+      - create_infrastructure
