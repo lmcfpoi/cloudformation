@@ -1,0 +1,42 @@
+version: 2.1
+
+jobs:
+  create_infrastructure:
+    docker:
+      - image: amazon/aws-cli
+    #params:
+      # aws-access-key-id:
+      #   default: AWS_ACCESS_KEY_ID
+      #   description: |
+      #     AWS access key id for IAM role. Set this to the name of
+      #     the environment variable you will use to hold this
+      #     value, i.e. AWS_ACCESS_KEY.
+      #   type: env_var_name
+      # aws-secret-access-key:
+      #   default: AWS_SECRET_ACCESS_KEY
+      #   description: |
+      #     AWS access key id for IAM role. Set this to the name of
+      #     the environment variable you will use to hold this
+      #     value, i.e. AWS_ACCESS_KEY.
+      #   type: env_var_name
+      # # aws-stack_name:
+      # #   default: AWS_STACK_NAME
+      # #   description: |
+      # #     AWS Stack name stie
+      # #   type: env_var_name
+      # # aws-default_region:
+      # #   default: AWS_DEFAULT_REGION
+      # #   description: |
+      # #     AWS region stie
+      # #   type: env_var_name
+    steps:
+      - checkout
+      - run:
+          name: "Create my AWS stack tabarnac...."
+          command: |
+            aws cloudformation deploy --stack-name $AWS_STACK_NAME --template-file template.yml
+      
+workflows:
+  myworkflow:
+    jobs:
+      - create_infrastructure
