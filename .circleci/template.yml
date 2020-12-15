@@ -8,7 +8,7 @@ Resources:
     Properties:
       SecurityGroups:
       - !Ref InstanceSecurityGroup
-      KeyName: myKP2
+      KeyName: myKP3
       ImageId: ami-0a741b782c2c8632d
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
